@@ -155,17 +155,14 @@ h3 {
   padding-right: clamp(0px, 32vw, 380px);
 }
 
-.hero .container::after {
-  content: "";
+.hero-badge {
   position: absolute;
   right: clamp(-10px, 1.2vw, 14px);
   top: clamp(-64px, -2.8vw, -18px);
   width: min(31vw, 320px);
   height: min(31vw, 320px);
   border-radius: 50%;
-  background-image: url("./team-icon.png");
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
   border: 4px solid rgba(255, 255, 255, 0.78);
   box-shadow:
     0 0 0 5px rgba(255, 188, 0, 0.24),
@@ -355,11 +352,11 @@ h3 {
 }
 
 .photo-soft img {
-  filter: brightness(1.08) saturate(1.08) contrast(1.02);
+  filter: brightness(1.08) saturate(1.08) contrast(1.02) blur(2px);
 }
 
 .photo-vivid img {
-  filter: brightness(1.13) saturate(1.16) contrast(1.04);
+  filter: brightness(1.13) saturate(1.16) contrast(1.04) blur(2px);
 }
 
 .gallery {
@@ -497,7 +494,7 @@ h3 {
     padding-right: 0;
   }
 
-  .hero .container::after {
+  .hero-badge {
     width: min(46vw, 210px);
     height: min(46vw, 210px);
     right: 0;

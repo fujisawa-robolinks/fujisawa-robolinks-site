@@ -8,6 +8,7 @@ const withBase = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
 <BaseLayout title="藤沢ロボリンクス | HOME" currentPath="/">
   <section class="hero">
     <div class="container">
+      <img class="hero-badge" src={withBase("/assets/team-icon.png")} alt="藤沢ロボリンクス チームアイコン" width="320" height="320" />
       <h1>湘南の風と、<br />ロボットのひらめき。</h1>
       <p>藤沢ロボリンクスは、藤沢市を拠点に小中学生がロボットスポーツを楽しみながら、挑戦力とチームワークを育てるチームです。</p>
       <div class="hero-actions">
@@ -34,7 +35,7 @@ const withBase = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
 
   <section class="section container">
     <article class="icon-feature">
-      <img src={withBase("/assets/team-icon.png")} alt="藤沢ロボリンクス チームアイコン" width="120" height="120" />
+      <img src={withBase("/assets/team-principle.png")} alt="藤沢ロボリンクス チーム理念イメージ" width="120" height="120" />
       <div>
         <h2>チーム理念</h2>
         <p class="lead">藤沢ロボリンクスは、「元気に、楽しく、礼儀正しく、みんなで楽しむロボットスポーツ」を大切にしています。自分が楽しむだけではなく、周りも楽しめるように声をかけ合い、協力しながら取り組んでいきます。</p>
