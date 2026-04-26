@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="活動写真2プレースホルダー">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1fb4f3"/>
+      <stop offset="100%" stop-color="#0a3e7a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="720" fill="url(#g2)"/>
+  <circle cx="1020" cy="150" r="68" fill="#ffc247"/>
+  <text x="130" y="390" fill="#ffffff" font-size="68" font-family="Yu Gothic, Meiryo, sans-serif" font-weight="700">ACTIVITY PHOTO 2</text>
+  <text x="130" y="448" fill="#e3f6ff" font-size="32" font-family="Yu Gothic, Meiryo, sans-serif">public/images/activities/activity-photo-2.svg</text>
+</svg>

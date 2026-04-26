@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="活動内容と実績 | 藤沢ロボリンクス" currentPath="/activities">
+  <section class="section container">
+    <h1>活動内容と実績</h1>
+    <p class="lead">藤沢ロボリンクスは、藤沢市・藤沢駅近郊で小中学生向けに活動しています。日々の活動更新はInstagramをご確認ください。</p>
+    <p><a class="btn" href="https://www.instagram.com/fujisawa_robolinks?igsh=MXMxNmJmNTdyZ24zZA==" target="_blank" rel="noreferrer">Instagramを見る</a></p>
+
+    <div class="activities-split">
+      <div class="activities-left">
+        <h2>活動スケジュール</h2>
+        <ul>
+          <li>月2回（第2土曜日・第4土曜日）に定期練習</li>
+          <li>会場は藤沢駅近郊の施設を中心に運営</li>
+          <li>対象は小学生・中学生（初心者歓迎）</li>
+        </ul>
+
+        <h2>活動内容</h2>
+        <ul>
+          <li>ロボットの基本操作・戦術練習</li>
+          <li>チーム対戦形式のミニゲーム</li>
+          <li>大会参加へ向けた役割分担と振り返り</li>
+        </ul>
+
+        <h2>大会実績</h2>
+        <ul>
+          <li>2025年10月 さがみロボスポ競技会 優勝</li>
+          <li>2025年10月 さがみロボスポ競技会 第3位</li>
+          <li>2026年3月 さがみカップ Day1 優勝</li>
+          <li>2026年3月 さがみカップ Day1 準優勝</li>
+        </ul>
+      </div>
+
+      <aside class="activities-right" aria-label="活動写真">
+        <figure class="photo-panel photo-soft">
+          <img src="/images/activities/activity-photo-1.jpg" alt="藤沢ロボリンクス 活動写真1" loading="lazy" />
+        </figure>
+        <figure class="photo-panel photo-vivid">
+          <img src="/images/activities/activity-photo-2.jpg" alt="藤沢ロボリンクス 活動写真2" loading="lazy" />
+        </figure>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

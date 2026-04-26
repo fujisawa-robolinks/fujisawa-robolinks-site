@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  currentPath?: string;
+}
+
+const { title, description = "藤沢ロボリンクス公式サイト", currentPath = "/" } = Astro.props;
+const pageClass = currentPath === "/" ? "page-home" : "page-default";
+
+const links = [
+  { href: "/", label: "HOME" },
+  { href: "/activities", label: "活動内容と実績" },
+  { href: "/album", label: "活動アルバム" },
+  { href: "/blog", label: "ブログ" },
+  { href: "/contact", label: "問い合わせ" }
+];
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/assets/team-icon.png" type="image/png" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body class={pageClass}>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/">
+          <img class="brand-icon" src="/assets/team-icon.png" alt="藤沢ロボリンクス チームアイコン" width="44" height="44" />
+          <span class="brand-text">
+            <span class="brand-sub">FUJISAWA ROBOLINKS</span>
+            <span class="brand-main">藤沢ロボリンクス</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="メインナビゲーション">
+          {
+            links.map((link) => (
+              <a href={link.href} aria-current={currentPath === link.href ? "page" : undefined}>{link.label}</a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>© 2026 藤沢ロボリンクス</p>
+      </div>
+    </footer>
+  </body>
+</html>

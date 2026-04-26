@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const posts = [
+  {
+    title: "さがみカップ出場レポート",
+    date: "2026-04-26",
+    summary:
+      "向陽小学校体育館で開催されたさがみカップで、藤沢ロボリンクスが優勝・準優勝を獲得しました。",
+    venue: "向陽小学校体育館",
+    highlights: [
+      "会場では自動運転バスのお試し走行が行われました。",
+      "展示エリアでは、相模原における宇宙開発に関するパネル展示が実施されていました。"
+    ],
+    participants:
+      "大会当日は相模原市のチームも含めた総当たり戦。藤沢ロボリンクスからは麺threes、シュークレープが出場しました。",
+    preliminary:
+      "前回大会の経験を活かし、予選会では2チームで1位・2位の好成績を収めました。",
+    finalMatch:
+      "同門対決となった優勝決定戦では、シュークレープが見事に勝利しました。",
+    results: [
+      "優勝: シュークレープ",
+      "準優勝: 麺threes"
+    ],
+    closing:
+      "チームとして活動を始めてから初の大会でしたが、今後の大会に向けて課題や反省を話し合う姿がとても頼もしく感じられました。次の大会は夏頃のため、春の間にしっかり準備を整えていきます。"
+  }
+];
+---
+
+<BaseLayout title="ブログ | 藤沢ロボリンクス" currentPath="/blog">
+  <section class="section container">
+    <h1>ブログ</h1>
+    <p class="lead">藤沢ロボリンクスの大会レポートや節目の活動記録を掲載します。</p>
+    {
+      posts.map((post) => (
+        <article class="post-card">
+          <h2>{post.title}</h2>
+          <p>{post.date}</p>
+          <p>{post.summary}</p>
+          <p><strong>会場:</strong> {post.venue}</p>
+          <ul>
+            {post.highlights.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <p>{post.participants}</p>
+          <p>{post.preliminary}</p>
+          <p>{post.finalMatch}</p>
+          <p><strong>大会結果</strong></p>
+          <ul>
+            {post.results.map((result) => (
+              <li>{result}</li>
+            ))}
+          </ul>
+          <p>{post.closing}</p>
+        </article>
+      ))
+    }
+  </section>
+</BaseLayout>

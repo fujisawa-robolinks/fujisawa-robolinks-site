@@ -1,0 +1,89 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { existsSync, readdirSync } from "node:fs";
+import { extname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const imageExtensions = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
+const albumRoot = fileURLToPath(new URL("../../public/album", import.meta.url));
+
+const albumGroups = existsSync(albumRoot)
+  ? readdirSync(albumRoot, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => {
+        const dirName = entry.name;
+        const dirPath = fileURLToPath(new URL(`../../public/album/${dirName}/`, import.meta.url));
+        const images = readdirSync(dirPath, { withFileTypes: true })
+          .filter((file) => file.isFile() && imageExtensions.has(extname(file.name).toLowerCase()))
+          .map((file) => `/album/${dirName}/${file.name}`)
+          .sort();
+
+        return {
+          id: dirName,
+          title: dirName,
+          images
+        };
+      })
+      .filter((group) => group.images.length > 0)
+  : [];
+---
+
+<BaseLayout title="活動アルバム | 藤沢ロボリンクス" currentPath="/album">
+  <section class="section container">
+    <h1>活動アルバム</h1>
+    <p class="lead">藤沢ロボリンクスの活動風景を、湘南の空気感とともに掲載していきます。</p>
+    <p class="lead">`public/album` 配下のサブディレクトリを自動検出し、各ディレクトリを1つのスライド枠として表示します。</p>
+
+    {
+      albumGroups.length > 0 ? (
+        <div class="album-grid">
+          {
+            albumGroups.map((group) => (
+              <article class="album-card" data-album-card>
+                <div class="album-slideshow" data-interval="3200">
+                  {
+                    group.images.map((src, index) => (
+                      <img
+                        class:list={["slide-image", "public-album-image", index === 0 && "is-active"]}
+                        src={src}
+                        alt={`${group.title} の活動写真 ${index + 1}`}
+                        loading="lazy"
+                      />
+                    ))
+                  }
+                </div>
+                <div class="album-meta">
+                  <h2>{group.title}</h2>
+                  <p>{group.images.length}枚</p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      ) : (
+        <p class="lead">まだ画像がありません。`public/album/ディレクトリ名` の中に写真を追加すると、ここにスライドショーが表示されます。</p>
+      )
+    }
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  const slideshows = document.querySelectorAll(".album-slideshow");
+
+  slideshows.forEach((slideshow, groupIndex) => {
+    const slides = Array.from(slideshow.querySelectorAll(".slide-image"));
+    if (slides.length <= 1) {
+      return;
+    }
+
+    let current = 0;
+    const base = Number(slideshow.getAttribute("data-interval") || "3200");
+    const interval = base + groupIndex * 300;
+
+    setInterval(() => {
+      slides[current].classList.remove("is-active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("is-active");
+    }, interval);
+  });
+</script>
