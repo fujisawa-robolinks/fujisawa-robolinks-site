@@ -8,6 +8,10 @@ const imageExtensions = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
 const albumRoot = fileURLToPath(new URL("../../public/album", import.meta.url));
 const baseUrl = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
+const formatAlbumTitle = (dirName: string) => {
+  const withoutDate = dirName.replace(/^20\d{2}[-_./年]?\d{1,2}(?:[-_./月])?[-_ ]*/, "");
+  return withoutDate || dirName;
+};
 
 const albumGroups = existsSync(albumRoot)
   ? readdirSync(albumRoot, { withFileTypes: true })
@@ -22,7 +26,7 @@ const albumGroups = existsSync(albumRoot)
 
         return {
           id: dirName,
-          title: dirName,
+          title: formatAlbumTitle(dirName),
           images
         };
       })
@@ -34,7 +38,7 @@ const albumGroups = existsSync(albumRoot)
   <section class="section container">
     <h1>活動アルバム</h1>
     <p class="lead">藤沢ロボリンクスの活動風景を、湘南の空気感とともに掲載していきます。</p>
-    <p class="lead">`public/album` 配下のサブディレクトリを自動検出し、各ディレクトリを1つのスライド枠として表示します。</p>
+    <p class="lead">それぞれの活動内容をスライドショーでご紹介します。</p>
 
     {
       albumGroups.length > 0 ? (
@@ -63,7 +67,7 @@ const albumGroups = existsSync(albumRoot)
           }
         </div>
       ) : (
-        <p class="lead">まだ画像がありません。`public/album/ディレクトリ名` の中に写真を追加すると、ここにスライドショーが表示されます。</p>
+        <p class="lead">まだ画像がありません。活動アルバムのフォルダに写真を追加すると、ここにスライドショーが表示されます。</p>
       )
     }
   </section>
