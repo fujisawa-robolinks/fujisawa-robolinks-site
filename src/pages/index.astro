@@ -1,5 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
 ---
 
 <BaseLayout title="藤沢ロボリンクス | HOME" currentPath="/">
@@ -8,7 +11,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <h1>湘南の風と、<br />ロボットのひらめき。</h1>
       <p>藤沢ロボリンクスは、藤沢市を拠点に小中学生がロボットスポーツを楽しみながら、挑戦力とチームワークを育てるチームです。</p>
       <div class="hero-actions">
-        <a class="btn" href="/activities">活動内容を見る</a>
+        <a class="btn" href={withBase("/activities")}>活動内容を見る</a>
         <a class="btn btn-sub" href="https://www.instagram.com/fujisawa_robolinks?igsh=MXMxNmJmNTdyZ24zZA==" target="_blank" rel="noreferrer">Instagramを見る</a>
       </div>
 
@@ -31,7 +34,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   <section class="section container">
     <article class="icon-feature">
-      <img src="/assets/team-icon.png" alt="藤沢ロボリンクス チームアイコン" width="120" height="120" />
+      <img src={withBase("/assets/team-icon.png")} alt="藤沢ロボリンクス チームアイコン" width="120" height="120" />
       <div>
         <h2>チーム理念</h2>
         <p class="lead">藤沢ロボリンクスは、「元気に、楽しく、礼儀正しく、みんなで楽しむロボットスポーツ」を大切にしています。自分が楽しむだけではなく、周りも楽しめるように声をかけ合い、協力しながら取り組んでいきます。</p>

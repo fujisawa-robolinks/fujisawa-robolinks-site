@@ -6,6 +6,8 @@ import { fileURLToPath } from "node:url";
 
 const imageExtensions = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
 const albumRoot = fileURLToPath(new URL("../../public/album", import.meta.url));
+const baseUrl = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
 
 const albumGroups = existsSync(albumRoot)
   ? readdirSync(albumRoot, { withFileTypes: true })
@@ -15,7 +17,7 @@ const albumGroups = existsSync(albumRoot)
         const dirPath = fileURLToPath(new URL(`../../public/album/${dirName}/`, import.meta.url));
         const images = readdirSync(dirPath, { withFileTypes: true })
           .filter((file) => file.isFile() && imageExtensions.has(extname(file.name).toLowerCase()))
-          .map((file) => `/album/${dirName}/${file.name}`)
+          .map((file) => withBase(`/album/${dirName}/${file.name}`))
           .sort();
 
         return {
