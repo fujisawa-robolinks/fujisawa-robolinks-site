@@ -9,6 +9,11 @@
 - ビルド時は公開用の `base` と `site` を自動設定しています
 - 公開先のベースURLは `https://fujisawa-robolinks.github.io/fujisawa-robolinks-site/` を想定しています
 
+## SEO設定
+
+- SEO対策済み（Google Search Consoleの確認HTML、robots.txt、sitemap.xml を `public/` に配置）
+- トップページの title / meta description / OGP は `src/pages/index.astro` と `src/layouts/BaseLayout.astro` で管理
+
 ## まず覚えること
 
 1. 編集対象は主に `src/pages` と `src/styles/global.css`
