@@ -5,7 +5,11 @@ const baseUrl = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${baseUrl}${path.replace(/^\//, "")}`;
 ---
 
-<BaseLayout title="藤沢ロボリンクス | HOME" currentPath="/">
+<BaseLayout
+  title="藤沢ロボリンクス｜小学生向けロボットスポーツチーム"
+  description="藤沢ロボリンクスは、神奈川県藤沢市で活動する小学生向けロボットスポーツチームです。ロボットづくりと対戦を通じて、楽しく学び、仲間と協力しながら成長する活動を行っています。"
+  currentPath="/"
+>
   <section class="hero">
     <div class="container">
       <img class="hero-badge" src={withBase("/assets/team-icon.png")} alt="藤沢ロボリンクス チームアイコン" width="320" height="320" />

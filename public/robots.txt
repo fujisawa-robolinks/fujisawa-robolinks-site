@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fujisawa-robolinks.github.io/fujisawa-robolinks-site/sitemap.xml
